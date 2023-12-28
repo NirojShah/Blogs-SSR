@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button id="back" onclick="history.back()">🡐</button>
+        <div class="nav">
+            <!-- <a href="/app/v1/blogs/dashboard"> -->
+            <div class="logo">Thunder<span>.org</span></div>
+            <!-- </a> -->
+            <div class="menu">
+                <form id="searchBox">
+                    <input type="text" name="search">
+                    <button>search</button>
+                </form>
+                <li><a href="/app/v1/blogs?limit=8">Get Blogs</a></li>
+                <li><a href="/app/v1/author/logout">Log-out</a></li>
+            </div>
+
+        </div>
+
+
+
+        <div class="allBLogs">
+            <h1>Blogs </h1>
+            <div class="blogbox">
+                <% userBlogs.forEach((doc)=>{%>
+                <div id="card">
+                    <p><%= doc.title%></p>
+                    <p><%= doc.snippet%></p>
+                    <p><%= doc.author.name%></p>
+                    <p>Price: <%= doc.price%>₹</p>
+                    <div class="btnsCard">
+                        <!-- <a href="/app/v1/blogs/<%=doc._id%>"><button>view</button></a> -->
+                        <a href="/app/v1/payment/create-checkout-session/<%= doc._id%>"><button>view</button></a>
+                    </div>
+                </div>
+                <%})%>
+                <div class="controlBtn">
+                    <%if(previous){%>
+                    <form>
+                        <a href="?page=<%= previous%>">
+                            <button type="button">previous</button>
+                        </a>
+                    </form>
+                    <%}%>
+                    <%for(let i=1;i<=totalPages;i++){%>
+                    <p id="pageNo"><%= i%></p>
+                    <%}%>
+                    
+                    <%if(next<=totalPages){%>
+                    <form>
+                        <a href="/app/v1/blogs/?page=<%= next%>">
+                            <button type="button">next</button>
+                        </a>
+                    </form>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="fetchedBlogs">
+            <h1>Top 8 Blogs</h1>
+            <div class="blogbox">
+                <% blogs.forEach((doc)=>{%>
+                    <div id="card">
+                        <p><%= doc.title%></p>
+                        <p><%= doc.snippet%></p>
+                        <p><%= doc.author.name%></p>
+                        <p>Price: <%= doc.price%>₹</p>
+                        <div class="btnsCard">
+                            <a href="/app/v1/blogs/<%=doc._id%>"><button>view</button></a>
+                        </div>
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

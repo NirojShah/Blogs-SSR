@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button id="back" onclick="history.back()">🡐</button>
+        <div class="nav">
+            <!-- <a href="/app/v1/blogs/dashboard"> -->
+            <div class="logo">Thunder<span>.org</span></div>
+            <!-- </a> -->
+            <div class="menu">
+                <li><a href="/app/v1/blogs">Get Blogs</a></li>
+                <li><a href="/app/v1/author/logout">Log-out</a></li>
+            </div>
+        </div>
+
+        <div class="eachBlogBox">
+            <div class="eachBlog">
+                <h1><%= eachBlog.title%></h1>
+
+                <%let imgPath = eachBlog.image[0].path.slice(6)%>
+                <img id="imageBox" src="<%=imgPath%>" alt="<%=eachBlog.title%>">
+
+                <p><%= eachBlog.description%></p>
+            </div>
+            <div class="viewRating">
+                <div class="ratingBox">
+                    <% ratings.forEach((doc)=>{%>
+                    <div class="rate">
+                        <p><%= doc.ratings%> Stars</p>
+                        <p> by <%= doc.user.name%></p>
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="btnbox">
+            <a href="/app/v1/blogs/update/<%=eachBlog.id%>"><button>UPDATE</button></a>
+            <form action="/app/v1/blogs/<%=eachBlog._id%>?_method=DELETE" method="POST">
+                <button type="submit" id="deleteBtn">DELETE</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button id="back" onclick="history.back()">🡐</button>
+        <div class="nav">
+            <!-- <a href="/app/v1/blogs/dashboard"> -->
+            <div class="logo">Thunder<span>.org</span></div>
+            <!-- </a> -->
+            <div class="menu">
+                <li><a href="/app/v1/blogs?limit=8">Get Blogs</a></li>
+                <li><a href="/app/v1/author/logout">Log-out</a></li>
+            </div>
+        </div>
+        <div class="eachBlogBox">
+            <div class="eachBlog">
+                <h1><%= eachBlog.title%></h1>
+
+
+                <%let imgPath = eachBlog.image[0].path.slice(6)%>
+                <img id="imageBox" src="<%=imgPath%>" alt="<%=eachBlog.title%>">
+
+
+                <p><%= eachBlog.description%></p>
+                <p><%= eachBlog.price%></p>
+            </div>
+            <div class="viewRating">
+                <div class="ratingBox">
+                    <% ratings.forEach((doc)=>{%>
+                    <div class="rate">
+                        <p><%= doc.ratings%> Stars</p>
+                        <p><span>by</span> <span><%= doc.user.name%></span></p>
+                    </div>
+                    <%})%>
+                </div>
+                <div class="ratingform">
+                    <form action="/app/v1/blogs/rating/<%=eachBlog._id%>" method="post">
+                        <span class="star-rating star-5">
+                            <input type="radio" name="ratings" value="1"><i></i>
+                            <input type="radio" name="ratings" value="2"><i></i>
+                            <input type="radio" name="ratings" value="3"><i></i>
+                            <input type="radio" name="ratings" value="4"><i></i>
+                            <input type="radio" name="ratings" value="5"><i></i>
+                        </span>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

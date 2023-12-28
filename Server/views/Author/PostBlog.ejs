@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Write Blog</title>
+</head>
+
+<body>
+    <div class="container">
+        <button id="back" onclick="history.back()">🡐</button>
+        <div class="nav">
+            <!-- <a href="/app/v1/blogs/dashboard"> -->
+                <div class="logo">Thunder<span>.org</span></div>
+            <!-- </a> -->
+            <div class="menu">
+                <li><a href="/app/v1/blogs">Get Blogs</a></li>
+                <li><a href="/app/v1/author/logout">Log-out</a></li>
+            </div>
+        </div>
+        <form class="form" action="/app/v1/blogs/" method="POST" enctype="multipart/form-data">
+            <input type="text" value="" name="title" placeholder="Title">
+            <input type="text" value="" name="snippet" placeholder="Snippet">
+            <textarea name="description" placeholder="Description" id="desc" cols="30" rows="10"></textarea>
+            <input type="number" name="price" placeholder="Price">
+            <input type="file" value="" id="file" name="image" placeholder="Title">
+            <div class="btns">
+                <button type="submit">POST</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

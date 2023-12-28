@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="nav">
+            <!-- <a href="/app/v1/blogs/dashboard"> -->
+            <div class="logo">Thunder<span>.org</span></div>
+            <!-- </a> -->
+            <div class="menu">
+                <li><a href="/app/v1/blogs">Get Blogs</a></li>
+                <li><a href="/app/v1/author/logout">Log-out</a></li>
+            </div>
+        </div>
+
+        <div class="fetchedBlogs">
+            <button id="back" onclick="history.back()">🡐</button>
+            <h1>My Blogs</h1>
+            <div class="blogbox">
+                <% authorBlog.forEach((doc)=>{%>
+                <div id="card">
+                    <p><%= doc.title%></p>
+                    <p><%= doc.snippet%></p>
+                    <p><%= doc.author.name%></p>
+                    <p>Price: <%= doc.price%>₹</p>
+                    <div class="btnsCard">
+                        <a href="/app/v1/blogs/<%=doc._id%>"><button>view</button></a>
+                        
+                    </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

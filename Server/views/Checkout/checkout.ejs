@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <title>Buy Blogs</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <!-- Use action="/create-checkout-session.php" if your server is PHP based. -->
+
+  <div class="container">
+    <div class="checkoutBox">
+      <h1>check out page</h1>
+      <h3><span>Title </span> <span>:  <%= blog.title%></span></h3>
+      <h3><span>By </span> <span>:  <%= blog.author.name%></span></h3>
+      <h3><span>Price </span> <span>:  <%= blog.price%>₹</span></h3>
+      
+    </div>
+    <form action="/app/v1/payment/create-checkout-session/<%= blog._id%>" method="POST">
+      <button id="buyNow" type="submit">Checkout</button>
+    </form>
+  </div>
+</body>
+
+</html>
