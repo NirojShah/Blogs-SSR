@@ -7,13 +7,12 @@ const CustomError = require("./Utils/CustomError")
 const cors = require("cors")
 const authorRouter = require("./routes/authorRoute")
 const adminRouter = require("./routes/adminRoute")
-const paymentRouter = require("./routes/stripeRoutes")
+const stripeRouter = require("./routes/stripeRoutes")
 const bodyParser = require("body-parser")
 const flash = require("connect-flash")
 const cookieParser = require("cookie-parser")
 const session = require("express-session")
 const cookieSession = require("cookie-session")
-
 const methodOverride = require("method-override")
 
 
@@ -91,7 +90,7 @@ app.use("/app/v1/user", userRouter)
 app.use("/app/v1/author",authorRouter)
 app.use("/app/v1/admin",adminRouter)
 
-app.use("/app/v1/payment",paymentRouter)
+app.use("/app/v1/payment",stripeRouter)
 
 
 // app.use("/app/v1/profile",auth,blogRoute) ==> we can pass here also

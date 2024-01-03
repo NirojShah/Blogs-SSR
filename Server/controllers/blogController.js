@@ -118,10 +118,14 @@ const getBlogs = asyncErrorHandler(async (req, res) => {
     //     "rating": sort
     // })
 
+    let your_blogs = await blogModel.find({buyedBy:req.user._id})
+
     let all_Blog = await blogModel.find({
         title: {
             $regex: search,
             $options: 'i'
+        },buyedBy:{
+            $ne:req.user._id
         }
     }).populate("author").skip(skip).limit(limit).sort(sort)
 
@@ -148,6 +152,7 @@ const getBlogs = asyncErrorHandler(async (req, res) => {
         let blogs = topEight
         let userBlogs = all_Blog
         res.render("AllBlogs", {
+            your_blogs,
             userBlogs,
             blogs,
             page,
@@ -163,6 +168,7 @@ const getBlogs = asyncErrorHandler(async (req, res) => {
         let blogs = topEight
         let userBlogs = all_Blog
         res.render("AllBlogs", {
+            your_blogs,
             userBlogs,
             blogs,
             page,
@@ -178,6 +184,7 @@ const getBlogs = asyncErrorHandler(async (req, res) => {
         let blogs = topEight
         let userBlogs = all_Blog
         res.render("AllBlogs", {
+            your_blogs,
             userBlogs,
             blogs,
             page,

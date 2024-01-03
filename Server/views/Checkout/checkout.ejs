@@ -3,6 +3,7 @@
 <head>
   <title>Buy Blogs</title>
   <link rel="stylesheet" href="/css/style.css">
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
       
     </div>
     <form action="/app/v1/payment/create-checkout-session/<%= blog._id%>" method="POST">
-      <button id="buyNow" type="submit">Checkout</button>
+      <button id="checkout-button" type="submit">Checkout</button>
     </form>
   </div>
 </body>

@@ -26,6 +26,47 @@
 
         </div>
 
+<!-- Your Blogs -->
+        <div class="allBLogs">
+            <h1>Your Blogs </h1>
+            <div class="blogbox">
+                <% your_blogs.forEach((doc)=>{%>
+                <div id="card">
+                    <p><%= doc.title%></p>
+                    <p><%= doc.snippet%></p>
+                    <p><%= doc.author.name%></p>
+                    <p>Price: <%= doc.price%>₹</p>
+                    <div class="btnsCard">
+                        <!-- <a href="/app/v1/blogs/<%=doc._id%>"><button>view</button></a> -->
+                        <a href="/app/v1/blogs/<%= doc._id%>"><button>view</button></a>
+                    </div>
+                </div>
+                <%})%>
+                <div class="controlBtn">
+                    <%if(previous){%>
+                    <form>
+                        <a href="?page=<%= previous%>">
+                            <button type="button">previous</button>
+                        </a>
+                    </form>
+                    <%}%>
+                    <%for(let i=1;i<=totalPages;i++){%>
+                    <p id="pageNo"><%= i%></p>
+                    <%}%>
+                    
+                    <%if(next<=totalPages){%>
+                    <form>
+                        <a href="/app/v1/blogs/?page=<%= next%>">
+                            <button type="button">next</button>
+                        </a>
+                    </form>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+        
+
 
 
         <div class="allBLogs">
